@@ -13,19 +13,27 @@ namespace Acme.Biz
     /// </summary>
     public class Product
     {
-        #region Constructors
+
         public Product()
         {
-         
+            var colourOptions = new List<string>();
+            colourOptions.Add("Red");
+            colourOptions.Add("Blue");
+            colourOptions.Add("Yellow");
+            colourOptions.Add("Green");
+            colourOptions.Insert(0,"White");
+            colourOptions.Remove("Yellow");
+            Console.WriteLine(colourOptions);
         }
-        public Product(int productId,
-                        string productName,
-                        string description) : this()
+
+        public Product (int productId, string productNme, string description) : this()
         {
             this.ProductId = productId;
             this.ProductName = productName;
             this.Description = description;
         }
+        #region Constructors
+       
         #endregion
 
         #region Properties
