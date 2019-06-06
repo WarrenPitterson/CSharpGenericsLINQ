@@ -34,7 +34,7 @@ namespace Acme.Biz
             var vendors = new Vendor[2]
                 {
                     new Vendor()
-                    { VendorId = 1, CompanyName = " ABC Corp", Email = "abc@abc.com" },
+                    { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" },
                     new Vendor()
                     { VendorId = 2, CompanyName = "XYZ inc", Email = "xyz@xyz.com" }
                 };
@@ -47,7 +47,7 @@ namespace Acme.Biz
             var vendors = new Dictionary<string, Vendor>()
             {
                 { "ABC Corp", new Vendor()
-                    { VendorId = 1, CompanyName = " ABC Corp", Email = "abc@abc.com" } },
+                    { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" } },
                 { "XYZ Inc", new Vendor()
                     { VendorId = 2, CompanyName = "XYZ inc", Email = "xyz@xyz.com" }}
                 };

@@ -85,11 +85,10 @@ namespace Acme.Biz
             return confirmation;
         }
 
-        public static List<string> SendEmail(List<Vendor> vendors, string message)
+        public static List<string> SendEmail(IList<Vendor> vendors, string message)
         {
             var confirmations = new List<string>();
             var emailService = new EmailService();
-            Console.WriteLine(vendors.Count);
 
             foreach (var vendor in vendors)
             {

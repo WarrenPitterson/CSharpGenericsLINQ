@@ -155,13 +155,13 @@ namespace Acme.Biz.Tests
         public void SendEmailTest()
         {
             var vendorRepository = new VendorRepository();
-            var VendorID = 1;
-            var vendors = vendorRepository.Retrieve(VendorID);
+            var vendors = vendorRepository.Retrieve();
             var expected = new List<string>()
             {  "Message sent: Important message for: ABC Corp",
-                "Message sent: Important message for: XYZ Inc"};
+               "Message sent: Important message for: XYZ Inc"
+            };
 
-            var actual = Vendor.SendEmail(new List <Vendor>(), "Test Message");
+            var actual = Vendor.SendEmail(vendors, "Test Message");
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -173,9 +173,9 @@ namespace Acme.Biz.Tests
             var vendors = vendorRepository.RetrieveArray();
             var expected = new List<string>()
             {  "Message sent: Important message for: ABC Corp",
-                "Message sent: Important message for: XYZ Inc"};
+               "Message sent: Important message for: XYZ Inc" };
 
-            var actual = Vendor.SendEmail(new List<Vendor>(), "Test Message");
+            var actual = Vendor.SendEmail(vendors, "Test Message");
 
             CollectionAssert.AreEqual(expected, actual);
         }
