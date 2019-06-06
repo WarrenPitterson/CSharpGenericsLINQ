@@ -17,8 +17,10 @@ namespace Acme.Biz.Tests
         public void CalculateSuggestedPriceTest()
         {
             // Arrange
-            var currentProduct = new Product(1, "Saw", "");
-            currentProduct.Cost = 50m;
+            var currentProduct = new Product(1, "Saw", "")
+            {
+                Cost = 50m
+            };
             var expected = new OperationResult<decimal>(55m, "");
 
             // Act
@@ -49,8 +51,10 @@ namespace Acme.Biz.Tests
         public void ProductName_Format()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "  Steel Hammer  ";
+            var currentProduct = new Product
+            {
+                ProductName = "  Steel Hammer  "
+            };
 
             var expected = "Steel Hammer";
 
@@ -65,8 +69,10 @@ namespace Acme.Biz.Tests
         public void ProductName_TooShort()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "aw";
+            var currentProduct = new Product
+            {
+                ProductName = "Saw"
+            };
 
             string expected = null;
             string expectedMessage = "Product Name must be at least 3 characters";
@@ -84,8 +90,10 @@ namespace Acme.Biz.Tests
         public void ProductName_TooLong()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "Steel Bladed Hand Saw";
+            var currentProduct = new Product
+            {
+                ProductName = "Steel Bladed Hand Saw"
+            };
 
             string expected = null;
             string expectedMessage = "Product Name cannot be more than 20 characters";
@@ -103,8 +111,10 @@ namespace Acme.Biz.Tests
         public void ProductName_JustRight()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "Saw";
+            var currentProduct = new Product
+            {
+                ProductName = "Saw"
+            };
 
             string expected = "Saw";
             string expectedMessage = null;

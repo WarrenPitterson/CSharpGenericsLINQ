@@ -16,8 +16,10 @@ namespace Acme.Biz.Tests
         public void SendWelcomeEmail_ValidCompany_Success()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.CompanyName = "ABC Corp";
+            var vendor = new Vendor
+            {
+                CompanyName = "ABC Corp"
+            };
             var expected = "Message sent: Hello ABC Corp";
 
             // Act
@@ -31,8 +33,10 @@ namespace Acme.Biz.Tests
         public void SendWelcomeEmail_EmptyCompany_Success()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.CompanyName = "";
+            var vendor = new Vendor
+            {
+                CompanyName = ""
+            };
             var expected = "Message sent: Hello";
 
             // Act
@@ -46,8 +50,10 @@ namespace Acme.Biz.Tests
         public void SendWelcomeEmail_NullCompany_Success()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.CompanyName = null;
+            var vendor = new Vendor
+            {
+                CompanyName = null
+            };
             var expected = "Message sent: Hello";
 
             // Act
@@ -131,9 +137,11 @@ namespace Acme.Biz.Tests
         public void ToStringTest()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.VendorId = 1;
-            vendor.CompanyName = "ABC Corp";
+            var vendor = new Vendor
+            {
+                VendorId = 1,
+                CompanyName = "ABC Corp"
+            };
             var expected = "Vendor: ABC Corp (1)";
 
             // Act
