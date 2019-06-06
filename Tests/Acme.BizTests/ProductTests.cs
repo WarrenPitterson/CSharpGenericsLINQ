@@ -71,7 +71,7 @@ namespace Acme.Biz.Tests
             //Arrange
             var currentProduct = new Product
             {
-                ProductName = "Saw"
+                ProductName = "Sa"
             };
 
             string expected = null;

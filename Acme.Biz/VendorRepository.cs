@@ -29,6 +29,65 @@ namespace Acme.Biz
             return vendor;
         }
 
+        public Vendor[] RetrieveArray()
+        {
+            var vendors = new Vendor[2]
+                {
+                    new Vendor()
+                    { VendorId = 1, CompanyName = " ABC Corp", Email = "abc@abc.com" },
+                    new Vendor()
+                    { VendorId = 2, CompanyName = "XYZ inc", Email = "xyz@xyz.com" }
+                };
+
+            return vendors;
+        }
+
+        public Dictionary<string, Vendor> RetrieveWithKeys()
+        {
+            var vendors = new Dictionary<string, Vendor>()
+            {
+                { "ABC Corp", new Vendor()
+                    { VendorId = 1, CompanyName = " ABC Corp", Email = "abc@abc.com" } },
+                { "XYZ Inc", new Vendor()
+                    { VendorId = 2, CompanyName = "XYZ inc", Email = "xyz@xyz.com" }}
+                };
+
+            foreach (var element in vendors)
+            {
+                var vendor = element.Value;
+                var key = element.Key;
+                Console.WriteLine($"Key: {key} Value: {vendor}");
+            }
+
+            return vendors;
+
+        }
+
+
+        public List<Vendor> Retrieve()
+        {
+            var vendors = new List<Vendor>();
+
+            if (vendors == null)
+            {
+                vendors.Add(new Vendor()
+                { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" });
+                vendors.Add(new Vendor()
+                { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" });
+            }
+            for (int i = 0; i < vendors.Count; i++)
+            {
+                Console.WriteLine(vendors[i]);
+            }
+            foreach (var vendor in vendors)
+            {
+                // Console.WriteLine(vendor);
+            }
+            return vendors;
+        }
+
+
+
         public T RetrieveValue<T>(string sql, T defaultValue)
         {
             T value = defaultValue;
@@ -49,19 +108,6 @@ namespace Acme.Biz
 
             return success;
         }
-
-        public Vendor[] RetrieveArray()
-        {
-            var vendors = new Vendor[2]
-                {
-                    new Vendor()
-                    { VendorId = 1, CompanyName = " ABC Corp", Email = "abc@abc.com" },
-                    new Vendor()
-                    { VendorId = 2, CompanyName = "XYZ inc", Email = "xyz@xyz.com" }
-                };
-
-            return vendors;
-        }
     }
 
-}
+    }
