@@ -16,11 +16,13 @@ namespace Acme.Biz
 
         public Product()
         {
-            var colourOptions = new List<string>();
-            colourOptions.Add("Red");
-            colourOptions.Add("Blue");
-            colourOptions.Add("Yellow");
-            colourOptions.Add("Green");
+            var colourOptions = new List<string>
+            {
+                "Red",
+                "Blue",
+                "Yellow",
+                "Green"
+            };
             colourOptions.Insert(0,"White");
             colourOptions.Remove("Yellow");
             Console.WriteLine(colourOptions);

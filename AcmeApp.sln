@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{551F9D44-8CC5-49B7-9EFD-4CC57CFDB504}"
+	ProjectSection(SolutionItems) = preProject
+		Acme.BizTests1\VendorRepositoryTests.cs = Acme.BizTests1\VendorRepositoryTests.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Common", "Acme.Common\Acme.Common.csproj", "{931B808F-2620-4B71-9F23-680F3BA90E6B}"
 EndProject

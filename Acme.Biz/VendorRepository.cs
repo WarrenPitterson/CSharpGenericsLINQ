@@ -49,5 +49,19 @@ namespace Acme.Biz
 
             return success;
         }
+
+        public Vendor[] RetrieveArray()
+        {
+            var vendors = new Vendor[2]
+                {
+                    new Vendor()
+                    { VendorId = 1, CompanyName = " ABC Corp", Email = "abc@abc.com" },
+                    new Vendor()
+                    { VendorId = 2, CompanyName = "XYZ inc", Email = "xyz@xyz.com" }
+                };
+
+            return vendors;
+        }
     }
+
 }
