@@ -38,18 +38,18 @@ namespace Acme.Biz
             var success = false;
 
             var orderTextBuilder = new StringBuilder("Order from Acme, Inc" +
-                            System.Environment.NewLine +
+                            Environment.NewLine +
                             "Product: " + product.ProductName +
-                            System.Environment.NewLine +
+                            Environment.NewLine +
                             "Quantity: " + quantity);
             if (deliverBy.HasValue)
             {
-                orderTextBuilder.Append( System.Environment.NewLine +
+                orderTextBuilder.Append( Environment.NewLine +
                             "Deliver By: " + deliverBy.Value.ToString("d"));
             }
-            if (!String.IsNullOrWhiteSpace(instructions))
+            if (!string.IsNullOrWhiteSpace(instructions))
             {
-                orderTextBuilder.Append( System.Environment.NewLine +
+                orderTextBuilder.Append( Environment.NewLine +
                             "Instructions: " + instructions);
             }
             var orderText = orderTextBuilder.ToString();
@@ -78,10 +78,10 @@ namespace Acme.Biz
         public string SendWelcomeEmail(string message)
         {
             var emailService = new EmailService();
-            var subject = ("Hello " + this.CompanyName).Trim();
+            var subject = ("Hello " + CompanyName).Trim();
             var confirmation = emailService.SendMessage(subject,
                                                         message,
-                                                        this.Email);
+                                                        Email);
             return confirmation;
         }
 

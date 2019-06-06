@@ -28,7 +28,7 @@ namespace Acme.Biz
             Console.WriteLine(colourOptions);
         }
 
-        public Product (int productId, string productNme, string description) : this()
+        public Product (int productId, string productName, string description) : this()
         {
             this.ProductId = productId;
             this.ProductName = productName;
@@ -46,6 +46,22 @@ namespace Acme.Biz
         public string Description { get; set; }
 
         public int ProductId { get; set; }
+
+        private Vendor productVendor;
+        public Vendor ProductVendor
+        {
+            get
+            {
+                if (productVendor == null)
+                {
+                    productVendor = new Vendor();
+                }
+                return productVendor;
+            }
+            set { productVendor = value; }
+        }
+
+        public string ValidationMessage { get; private set; }
 
         private string productName;
         public string ProductName
@@ -73,20 +89,6 @@ namespace Acme.Biz
             }
         }
 
-        private Vendor productVendor;
-        public Vendor ProductVendor
-        {
-            get {
-                if (productVendor == null)
-                {
-                    productVendor = new Vendor();
-                }
-                return productVendor;
-            }
-            set { productVendor = value; }
-        }
-
-        public string ValidationMessage { get; private set; }
 
         #endregion
 
