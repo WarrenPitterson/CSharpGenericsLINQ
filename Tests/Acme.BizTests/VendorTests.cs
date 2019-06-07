@@ -201,6 +201,6 @@ namespace Acme.Biz.Tests
 
             CollectionAssert.AreEqual(expected, actual);
         }
-
     }
-}
+
+   }

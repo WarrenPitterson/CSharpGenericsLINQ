@@ -38,17 +38,71 @@ namespace Acme.Biz.Tests
         {
             //Arrange
             var repository = new VendorRepository();
-            var expected = new List<Vendor>();
-            expected.Add(new Vendor()
-            { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" });
-            expected.Add(new Vendor()
-            { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" });
+            var expected = new List<Vendor>
+            {
+                new Vendor()
+                { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" },
+                new Vendor()
+                { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" }
+            };
 
             //Act
             var actual = repository.Retrieve();
 
             //Assert
             CollectionAssert.AreEqual(expected, actual.ToList());
+        }
+
+        [TestMethod()]
+        public void RetrieveWithInteratorTest()
+        {
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>()
+            {
+                { new Vendor()
+                { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" } },
+                { new Vendor()
+                { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" } }
+            };
+
+            var vendorIterator = repository.RetrieveWithIterator();
+            foreach (var item in vendorIterator)
+                {
+                Console.WriteLine(item);
+                }
+
+            var actual = vendorIterator.ToList();
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void RetriveAllTest()
+        {
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>()
+            {
+                { new Vendor()
+                {VendorId = 3, CompanyName = "Manchester Firm", Email = "Manchester@Firm.co.uk" }},
+                {new Vendor()
+                {VendorId = 4, CompanyName = "Pitterson Empire", Email = "Warren@Pitterson.co.uk" }},
+                { new Vendor()
+                {VendorId = 5, CompanyName = "Rebel Ltd", Email = "Rebel@Alliance.co.uk" }},
+                { new Vendor()
+                {VendorId = 6, CompanyName = "Chess Ltd", Email = "King@ChessLtd.co.uk" }},
+                { new Vendor()
+                {VendorId = 7, CompanyName = "Checkmate Productions", Email = "Gameover@Checkmate.co.uk" }},
+                { new Vendor()
+                {VendorId = 8, CompanyName = "Kellys Ltd", Email = "Sinead@Kelly.co.uk" }},
+            };
+
+            var vendors = repository.RetrieveAll();
+
+            var vendorQuery = from v in vendors
+                              where v.CompanyName.Contains("Ltd")
+                              select v;
+
+            CollectionAssert.AreEqual(expected, vendorQuery.ToList());
         }
 
 
