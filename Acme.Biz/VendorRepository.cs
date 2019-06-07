@@ -8,7 +8,7 @@ namespace Acme.Biz
 {
     public class VendorRepository
     {
-        private List<Vendor> vendors;
+        public List<Vendor> vendors;
 
         /// <summary>
         /// Retrieve one vendor.
