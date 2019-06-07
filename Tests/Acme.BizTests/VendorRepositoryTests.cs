@@ -67,9 +67,9 @@ namespace Acme.Biz.Tests
 
             var vendorIterator = repository.RetrieveWithIterator();
             foreach (var item in vendorIterator)
-                {
+            {
                 Console.WriteLine(item);
-                }
+            }
 
             var actual = vendorIterator.ToList();
 
@@ -103,17 +103,14 @@ namespace Acme.Biz.Tests
             //                  orderby v.CompanyName
             //                  select v;
 
-            var vendorQuery = vendors.Where(FilterCompanies).OrderBy(OrderCompaniesByName);
+            //var vendorQuery = vendors.Where(FilterCompanies).OrderBy(OrderCompaniesByName);
+
+            var vendorQuery = vendors.Where(v => v.CompanyName.Contains("Ltd"))
+                                     .OrderBy(v => v.CompanyName);
+
 
             CollectionAssert.AreEqual(expected, vendorQuery.ToList());
         }
 
-
-        private bool FilterCompanies(Vendor v) => v.CompanyName.Contains("Ltd");
-
-        private string OrderCompaniesByName(Vendor v) => v.CompanyName;
-        }
-
-
-
+    }
     }
