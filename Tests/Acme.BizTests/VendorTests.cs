@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Acme.Common;
+using Acme.Common; 
 
 namespace Acme.Biz.Tests
 {
@@ -155,11 +155,15 @@ namespace Acme.Biz.Tests
         public void SendEmailTest()
         {
             var vendorRepository = new VendorRepository();
-            var vendors = vendorRepository.Retrieve();
+            var vendorsCollection = vendorRepository.Retrieve();
             var expected = new List<string>()
             {  "Message sent: Important message for: ABC Corp",
                "Message sent: Important message for: XYZ Inc"
             };
+
+            var vendors = vendorsCollection.ToList();
+
+            Console.WriteLine(vendors.Count);
 
             var actual = Vendor.SendEmail(vendors, "Test Message");
 
@@ -170,16 +174,33 @@ namespace Acme.Biz.Tests
         public void SendEmailTestArray()
         {
             var vendorRepository = new VendorRepository();
-            var vendors = vendorRepository.RetrieveArray();
+            var vendorsCollection = vendorRepository.Retrieve();
             var expected = new List<string>()
             {  "Message sent: Important message for: ABC Corp",
                "Message sent: Important message for: XYZ Inc" };
+            var vendors = vendorsCollection.ToArray();
+            Console.WriteLine(vendors.Length);
+
 
             var actual = Vendor.SendEmail(vendors, "Test Message");
 
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void SendEmailTestDictionary()
+        {
+            var vendorRepository = new VendorRepository();
+            var vendorsCollection = vendorRepository.Retrieve();
+            var expected = new List<string>()
+            {  "Message sent: Important message for: ABC Corp",
+               "Message sent: Important message for: XYZ Inc" };
+            var vendors = vendorsCollection.ToDictionary(v => v.CompanyName);
+
+            var actual = Vendor.SendEmail(vendors.Values, "Test Message");
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
     }
-
-
 }

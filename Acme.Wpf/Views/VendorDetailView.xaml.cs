@@ -21,7 +21,7 @@ namespace Acme.Wpf.Views
             if (vm != null)
             {
                 var vendorRepository = new VendorRepository();
-                vendorRepository.Save(vm.currentVendor);
+                vendorRepository.Save(vm.CurrentVendor);
             }
         }
 
