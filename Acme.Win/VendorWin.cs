@@ -42,6 +42,7 @@ namespace Acme.Win
         private void LoadData()
         {
             vendorRepository = new VendorRepository();
+            currentVendor = vendorRepository.Retrieve(1);
 
             // Populate the form
             this.CompanyNameTextBox.Text = currentVendor.CompanyName;
